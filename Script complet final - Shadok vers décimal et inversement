@@ -1,0 +1,65 @@
+###Shadok vers décimal###
+
+def sha2dec():  
+    a=input("Entrez un nombre en Shadok : ") #permet de lancer le script   
+    b=a    #affectation
+    b=b.replace('ga','0').replace('bu','1').replace('zo','2').replace('meu','3')
+    #attribue les valeurs principales au language shadok
+    S=0    #affectation
+    l=len(b)-1    #rang (chaine)
+    for chiffre in b:    
+        S=S+int(chiffre)*4**l   
+        l=l-1 #permet de définir tous les rangs jusqu'au rang 0
+    print(S)    
+print(sha2dec())
+
+
+####Décimal vers Shadok####
+
+def shadok(a):
+    if a==0:
+        a='GA'
+    if a==1:
+        a='BU'
+    if a==2:
+        a='ZO'
+    if a==3:
+        a='MEU'
+    return a
+
+def shadok2(a):
+    if a==0:
+        a='AG'
+    if a==1:
+        a='UB'
+    if a==2:
+        a='OZ'
+    if a==3:
+        a='UEM'
+    return a
+#La deuxième fonction sert uniquement pour a>=4 car on le verra par la suite
+#que si on utilise la première fonction, la réponse sera mal formulé
+#par ex : 37=>OZUBUB
+
+a=int(input("Entrez un nombre en décimal : "))
+b=a
+ch=''
+while a<=3:
+    print(sha(a))
+    break
+while a>=4:
+    i=b%4  #i est le reste de la division euclidienne
+    if b<4:
+        ch=ch+str(shadok2(i))
+        break #break permet d'arrêter la boucle lancée par 'while' !
+    else:
+        ch=ch+str(shadok2(i))
+    b=b//4
+nch=""
+for x in reversed(ch):  #reversed affiche la chaine de caractère à l'envers
+    nch=nch+str(x)
+print(nch)
+
+
+
+
